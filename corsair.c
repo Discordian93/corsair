@@ -221,6 +221,7 @@ int main(void)
         BN_CTX_free(ctx);
         return 1;
     }
+    BN_copy(qmenos1, comun);
     BN_sub_word(pmenos1, 1);
     BN_sub_word(qmenos1, 1);
     BIGNUM *producto = BN_new();
@@ -401,6 +402,7 @@ int main(void)
     }
     BIO_set_close(biout, BIO_CLOSE);
     PEM_write_bio_RSAPrivateKey(biout, priv, NULL, 0,NULL, NULL, NULL);
+    //BN_print_fp(stdout, producto);
     BIO_free(key1bio);
     BIO_free(key2bio);
     //BN_free(comun);
